@@ -1,6 +1,5 @@
 #:schema node_modules/wrangler/config-schema.json
-<<<<<<< HEAD
-name = "my-bltdiy"
+name = "my-bolt"
 compatibility_date = "2024-01-01"
 workers_dev = true
 
@@ -18,14 +17,7 @@ NPM_VERSION = "10"
 PNPM_VERSION = "8"
 
 [env.production]
-name = "my-bltdiy-prod"
+name = "my-bolt-prod"
 
 [env.staging]
-name = "my-bltdiy-staging"
-=======
-name = "bolt"
-compatibility_flags = ["nodejs_compat"]
-compatibility_date = "2024-07-01"
-pages_build_output_dir = "./build/client"
-send_metrics = false
->>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
+name = "my-bolt-staging"
