@@ -5,19 +5,27 @@ import { classNames } from '~/utils/classNames';
 import { DialogTitle, dialogVariants, dialogBackdropVariants } from '~/components/ui/Dialog';
 import { IconButton } from '~/components/ui/IconButton';
 import styles from './Settings.module.scss';
+<<<<<<< HEAD
+=======
+import ChatHistoryTab from './chat-history/ChatHistoryTab';
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 import ProvidersTab from './providers/ProvidersTab';
 import { useSettings } from '~/lib/hooks/useSettings';
 import FeaturesTab from './features/FeaturesTab';
 import DebugTab from './debug/DebugTab';
 import EventLogsTab from './event-logs/EventLogsTab';
 import ConnectionsTab from './connections/ConnectionsTab';
+<<<<<<< HEAD
 import DataTab from './data/DataTab';
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 interface SettingsProps {
   open: boolean;
   onClose: () => void;
 }
 
+<<<<<<< HEAD
 type TabType = 'data' | 'providers' | 'features' | 'debug' | 'event-logs' | 'connection';
 
 export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
@@ -26,6 +34,16 @@ export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
 
   const tabs: { id: TabType; label: string; icon: string; component?: ReactElement }[] = [
     { id: 'data', label: 'Data', icon: 'i-ph:database', component: <DataTab /> },
+=======
+type TabType = 'chat-history' | 'providers' | 'features' | 'debug' | 'event-logs' | 'connection';
+
+export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
+  const { debug, eventLogs } = useSettings();
+  const [activeTab, setActiveTab] = useState<TabType>('chat-history');
+
+  const tabs: { id: TabType; label: string; icon: string; component?: ReactElement }[] = [
+    { id: 'chat-history', label: 'Chat History', icon: 'i-ph:book', component: <ChatHistoryTab /> },
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     { id: 'providers', label: 'Providers', icon: 'i-ph:key', component: <ProvidersTab /> },
     { id: 'connection', label: 'Connection', icon: 'i-ph:link', component: <ConnectionsTab /> },
     { id: 'features', label: 'Features', icon: 'i-ph:star', component: <FeaturesTab /> },

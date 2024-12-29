@@ -1,4 +1,5 @@
 # Welcome to bolt diy
+<<<<<<< HEAD
 
 bolt.diy allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
 
@@ -16,6 +17,20 @@ bolt.diy allows you to choose the LLM that you use for each prompt! Currently, y
   - [Option 1: Without Docker](#option-1-without-docker)
   - [Option 2: With Docker](#option-2-with-docker)
 - [Update Your Local Version to the Latest](#update-your-local-version-to-the-latest)
+=======
+bolt.diy allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
+
+## Table of Contents
+- [Join the community!](#join-the-community)
+- [What's bolt.diy](#whats-boltdiy)
+- [What Makes bolt.diy Different](#what-makes-boltdiy-different)
+- [Setup](#setup)
+- [Run with Docker](#run-with-docker)
+  - [Using Helper Scripts](#1a-using-helper-scripts)
+  - [Direct Docker Build Commands](#1b-direct-docker-build-commands-alternative-to-using-npm-scripts)
+  - [Docker Compose with Profiles](#2-docker-compose-with-profiles-to-run-the-container)
+- [Run Without Docker](#run-without-docker)
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 - [Adding New LLMs](#adding-new-llms)
 - [Available Scripts](#available-scripts)
 - [Development](#development)
@@ -29,6 +44,7 @@ bolt.diy allows you to choose the LLM that you use for each prompt! Currently, y
 
 ---
 
+<<<<<<< HEAD
 ## Features
 
 - **AI-powered full-stack web development** directly in your browser.
@@ -38,11 +54,36 @@ bolt.diy allows you to choose the LLM that you use for each prompt! Currently, y
 - **Revert code to earlier versions** for easier debugging and quicker changes.
 - **Download projects as ZIP** for easy portability.
 - **Integration-ready Docker support** for a hassle-free setup.
+=======
+## Whats bolt.diy
+
+bolt.diy is an AI-powered web development agent that allows you to prompt, run, edit, and deploy full-stack applications directly from your browser—no local setup required. If you're here to build your own AI-powered web dev agent using the Bolt open source codebase, [click here to get started!](./CONTRIBUTING.md)
+
+---
+
+## What Makes bolt.diy Different
+
+Claude, v0, etc are incredible- but you can't install packages, run backends, or edit code. That’s where bolt.diy stands out:
+
+- **Full-Stack in the Browser**: bolt.diy integrates cutting-edge AI models with an in-browser development environment powered by **StackBlitz’s WebContainers**. This allows you to:
+  - Install and run npm tools and libraries (like Vite, Next.js, and more)
+  - Run Node.js servers
+  - Interact with third-party APIs
+  - Deploy to production from chat
+  - Share your work via a URL
+
+- **AI with Environment Control**: Unlike traditional dev environments where the AI can only assist in code generation, bolt.diy gives AI models **complete control** over the entire  environment including the filesystem, node server, package manager, terminal, and browser console. This empowers AI agents to handle the whole app lifecycle—from creation to deployment.
+
+Whether you’re an experienced developer, a PM, or a designer, bolt.diy allows you to easily build production-grade full-stack applications.
+
+For developers interested in building their own AI-powered development tools with WebContainers, check out the open-source Bolt codebase in this repo!
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 ---
 
 ## Setup
 
+<<<<<<< HEAD
 If you're new to installing software from GitHub, don't worry! If you encounter any issues, feel free to submit an "issue" using the provided links or improve this documentation by forking the repository, editing the instructions, and submitting a pull request. The following instruction will help you get the stable branch up and running on your local machine in no time.
 
 ### Prerequisites
@@ -88,6 +129,47 @@ defaults write com.apple.finder AppleShowAllFiles YES
 ```
 
 Make sure to add your API keys for each provider you want to use, for example:
+=======
+Many of you are new users to installing software from Github. If you have any installation troubles reach out and submit an "issue" using the links above, or feel free to enhance this documentation by forking, editing the instructions, and doing a pull request.
+
+1. [Install Git from](https://git-scm.com/downloads)
+
+2. [Install Node.js from](https://nodejs.org/en/download/)
+
+Pay attention to the installer notes after completion. 
+
+On all operating systems, the path to Node.js should automatically be added to your system path. But you can check your path if you want to be sure. On Windows, you can search for "edit the system environment variables" in your system, select "Environment Variables..." once you are in the system properties, and then check for a path to Node in your "Path" system variable. On a Mac or Linux machine, it will tell you to check if /usr/local/bin is in your $PATH. To determine if usr/local/bin is included in $PATH open your Terminal and run:
+
+```
+echo $PATH .
+```
+
+If you see usr/local/bin in the output then you're good to go.
+
+3. Clone the repository (if you haven't already) by opening a Terminal window (or CMD with admin permissions) and then typing in this:
+
+```
+git clone https://github.com/stackblitz-labs/bolt.diy.git
+```
+
+3. Rename .env.example to .env.local and add your LLM API keys. You will find this file on a Mac at "[your name]/bolt.diy/.env.example". For Windows and Linux the path will be similar.
+
+![image](https://github.com/user-attachments/assets/7e6a532c-2268-401f-8310-e8d20c731328)
+
+If you can't see the file indicated above, its likely you can't view hidden files. On Mac, open a Terminal window and enter this command below. On Windows, you will see the hidden files option in File Explorer Settings. A quick Google search will help you if you are stuck here.
+
+```
+defaults write com.apple.finder AppleShowAllFiles YES
+```
+
+**NOTE**: you only have to set the ones you want to use and Ollama doesn't need an API key because it runs locally on your computer:
+
+[Get your GROQ API Key here](https://console.groq.com/keys)
+
+[Get your Open AI API Key by following these instructions](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key)
+
+Get your Anthropic API Key in your [account settings](https://console.anthropic.com/settings/keys)
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 ```
 GROQ_API_KEY=XXX
@@ -95,6 +177,7 @@ OPENAI_API_KEY=XXX
 ANTHROPIC_API_KEY=XXX
 ```
 
+<<<<<<< HEAD
 Once you've set your keys, you can proceed with running the app. You will set these keys up during the initial setup, and you can revisit and update them later after the app is running.
 
 **Note**: Never commit your `.env.local` file to version control. It’s already included in the `.gitignore`.
@@ -207,12 +290,93 @@ pnpm install
   ```
 
 This ensures that you're running the latest version of bolt.diy and can take advantage of all the newest features and bug fixes.
+=======
+Optionally, you can set the debug level:
+
+```
+VITE_LOG_LEVEL=debug
+```
+
+**Important**: Never commit your `.env.local` file to version control. It's already included in .gitignore.
+
+## Run with Docker
+
+Prerequisites:
+
+Git and Node.js as mentioned above, as well as Docker: https://www.docker.com/
+
+### 1a. Using Helper Scripts
+
+NPM scripts are provided for convenient building:
+
+```bash
+# Development build
+npm run dockerbuild
+
+# Production build
+npm run dockerbuild:prod
+```
+
+### 1b. Direct Docker Build Commands (alternative to using NPM scripts)
+
+You can use Docker's target feature to specify the build environment instead of using NPM scripts if you wish:
+
+```bash
+# Development build
+docker build . --target bolt-ai-development
+
+# Production build
+docker build . --target bolt-ai-production
+```
+
+### 2. Docker Compose with Profiles to Run the Container
+
+Use Docker Compose profiles to manage different environments:
+
+```bash
+# Development environment
+docker-compose --profile development up
+
+# Production environment
+docker-compose --profile production up
+```
+
+When you run the Docker Compose command with the development profile, any changes you
+make on your machine to the code will automatically be reflected in the site running
+on the container (i.e. hot reloading still applies!).
+
+---
+
+## Run Without Docker
+
+1. Install dependencies using Terminal (or CMD in Windows with admin permissions):
+
+```
+pnpm install
+```
+
+If you get an error saying "command not found: pnpm" or similar, then that means pnpm isn't installed. You can install it via this:
+
+```
+sudo npm install -g pnpm
+```
+
+2. Start the application with the command:
+
+```bash
+pnpm run dev
+```
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 ---
 
 ## Adding New LLMs:
 
+<<<<<<< HEAD
 To make new LLMs available to use in this version of bolt.diy, head on over to `app/utils/constants.ts` and find the constant MODEL_LIST. Each element in this array is an object that has the model ID for the name (get this from the provider's API documentation), a label for the frontend model dropdown, and the provider.
+=======
+To make new LLMs available to use in this version of bolt.diy, head on over to `app/utils/constants.ts` and find the constant MODEL_LIST. Each element in this array is an object that has the model ID for the name (get this from the provider's API documentation), a label for the frontend model dropdown, and the provider. 
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 By default, Anthropic, OpenAI, Groq, and Ollama are implemented as providers, but the YouTube video for this repo covers how to extend this to work with more providers if you wish!
 

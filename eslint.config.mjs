@@ -4,7 +4,17 @@ import { getNamingConventionRule, tsFileExtensions } from '@blitz/eslint-plugin/
 
 export default [
   {
+<<<<<<< HEAD
     ignores: ['**/dist', '**/node_modules', '**/.wrangler', '**/bolt/build', '**/.history'],
+=======
+    ignores: [
+      '**/dist',
+      '**/node_modules',
+      '**/.wrangler',
+      '**/bolt/build',
+      '**/.history',
+    ],
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   },
   ...blitzPlugin.configs.recommended(),
   {
@@ -14,6 +24,7 @@ export default [
       '@typescript-eslint/no-empty-object-type': 'off',
       '@blitz/comment-syntax': 'off',
       '@blitz/block-scope-case': 'off',
+<<<<<<< HEAD
       'array-bracket-spacing': ['error', 'never'],
       'object-curly-newline': ['error', { consistent: true }],
       'keyword-spacing': ['error', { before: true, after: true }],
@@ -23,6 +34,17 @@ export default [
       'no-eval': ['error'],
       'linebreak-style': ['error', 'unix'],
       'arrow-spacing': ['error', { before: true, after: true }],
+=======
+      'array-bracket-spacing': ["error", "never"],
+      'object-curly-newline': ["error", { "consistent": true }],
+      'keyword-spacing': ["error", { "before": true, "after": true }],
+      'consistent-return': "error",
+      'semi': ["error", "always"],
+      'curly': ["error"],
+      'no-eval': ["error"],
+      'linebreak-style': ["error", "unix"],
+      'arrow-spacing': ["error", { "before": true, "after": true }]
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     },
   },
   {
@@ -47,7 +69,11 @@ export default [
           patterns: [
             {
               group: ['../'],
+<<<<<<< HEAD
               message: "Relative imports are not allowed. Please use '~/' instead.",
+=======
+              message: 'Relative imports are not allowed. Please use \'~/\' instead.',
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
             },
           ],
         },

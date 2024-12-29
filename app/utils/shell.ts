@@ -60,9 +60,13 @@ export class BoltShell {
   #webcontainer: WebContainer | undefined;
   #terminal: ITerminal | undefined;
   #process: WebContainerProcess | undefined;
+<<<<<<< HEAD
   executionState = atom<
     { sessionId: string; active: boolean; executionPrms?: Promise<any>; abort?: () => void } | undefined
   >();
+=======
+  executionState = atom<{ sessionId: string; active: boolean; executionPrms?: Promise<any> } | undefined>();
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   #outputStream: ReadableStreamDefaultReader<string> | undefined;
   #shellInputStream: WritableStreamDefaultWriter<string> | undefined;
 
@@ -95,17 +99,24 @@ export class BoltShell {
     return this.#process;
   }
 
+<<<<<<< HEAD
   async executeCommand(sessionId: string, command: string, abort?: () => void): Promise<ExecutionResult> {
+=======
+  async executeCommand(sessionId: string, command: string): Promise<ExecutionResult> {
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     if (!this.process || !this.terminal) {
       return undefined;
     }
 
     const state = this.executionState.get();
 
+<<<<<<< HEAD
     if (state?.active && state.abort) {
       state.abort();
     }
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     /*
      * interrupt the current execution
      *  this.#shellInputStream?.write('\x03');
@@ -122,11 +133,16 @@ export class BoltShell {
 
     //wait for the execution to finish
     const executionPromise = this.getCurrentExecutionResult();
+<<<<<<< HEAD
     this.executionState.set({ sessionId, active: true, executionPrms: executionPromise, abort });
+=======
+    this.executionState.set({ sessionId, active: true, executionPrms: executionPromise });
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
     const resp = await executionPromise;
     this.executionState.set({ sessionId, active: false });
 
+<<<<<<< HEAD
     if (resp) {
       try {
         resp.output = cleanTerminalOutput(resp.output);
@@ -135,6 +151,8 @@ export class BoltShell {
       }
     }
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     return resp;
   }
 
@@ -230,6 +248,7 @@ export class BoltShell {
   }
 }
 
+<<<<<<< HEAD
 /**
  * Cleans and formats terminal output while preserving structure and paths
  * Handles ANSI, OSC, and various terminal control sequences
@@ -289,6 +308,8 @@ export function cleanTerminalOutput(input: string): string {
     .replace(/\u0000/g, ''); // Remove null characters
 }
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 export function newBoltShellProcess() {
   return new BoltShell();
 }

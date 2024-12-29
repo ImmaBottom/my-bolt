@@ -17,7 +17,10 @@ import { extractRelativePath } from '~/utils/diff';
 import { description } from '~/lib/persistence';
 import Cookies from 'js-cookie';
 import { createSampler } from '~/utils/sampler';
+<<<<<<< HEAD
 import type { ActionAlert } from '~/types/actions';
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 export interface ArtifactState {
   id: string;
@@ -39,15 +42,21 @@ export class WorkbenchStore {
   #editorStore = new EditorStore(this.#filesStore);
   #terminalStore = new TerminalStore(webcontainer);
 
+<<<<<<< HEAD
   #reloadedMessages = new Set<string>();
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   artifacts: Artifacts = import.meta.hot?.data.artifacts ?? map({});
 
   showWorkbench: WritableAtom<boolean> = import.meta.hot?.data.showWorkbench ?? atom(false);
   currentView: WritableAtom<WorkbenchViewType> = import.meta.hot?.data.currentView ?? atom('code');
   unsavedFiles: WritableAtom<Set<string>> = import.meta.hot?.data.unsavedFiles ?? atom(new Set<string>());
+<<<<<<< HEAD
   actionAlert: WritableAtom<ActionAlert | undefined> =
     import.meta.hot?.data.unsavedFiles ?? atom<ActionAlert | undefined>(undefined);
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   modifiedFiles = new Set<string>();
   artifactIdList: string[] = [];
   #globalExecutionQueue = Promise.resolve();
@@ -57,7 +66,10 @@ export class WorkbenchStore {
       import.meta.hot.data.unsavedFiles = this.unsavedFiles;
       import.meta.hot.data.showWorkbench = this.showWorkbench;
       import.meta.hot.data.currentView = this.currentView;
+<<<<<<< HEAD
       import.meta.hot.data.actionAlert = this.actionAlert;
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     }
   }
 
@@ -95,12 +107,15 @@ export class WorkbenchStore {
   get boltTerminal() {
     return this.#terminalStore.boltTerminal;
   }
+<<<<<<< HEAD
   get alert() {
     return this.actionAlert;
   }
   clearAlert() {
     this.actionAlert.set(undefined);
   }
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
   toggleTerminal(value?: boolean) {
     this.#terminalStore.toggleTerminal(value);
@@ -245,10 +260,13 @@ export class WorkbenchStore {
     // TODO: what do we wanna do and how do we wanna recover from this?
   }
 
+<<<<<<< HEAD
   setReloadedMessages(messages: string[]) {
     this.#reloadedMessages = new Set(messages);
   }
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   addArtifact({ messageId, title, id, type }: ArtifactCallbackData) {
     const artifact = this.#getArtifact(messageId);
 
@@ -265,6 +283,7 @@ export class WorkbenchStore {
       title,
       closed: false,
       type,
+<<<<<<< HEAD
       runner: new ActionRunner(
         webcontainer,
         () => this.boltTerminal,
@@ -276,6 +295,9 @@ export class WorkbenchStore {
           this.actionAlert.set(alert);
         },
       ),
+=======
+      runner: new ActionRunner(webcontainer, () => this.boltTerminal),
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     });
   }
 

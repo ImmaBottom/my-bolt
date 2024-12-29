@@ -39,6 +39,7 @@ modelfiles
 site
 
 # commit file ignore
+<<<<<<< HEAD
 app/commit.json
 
 # Environment files
@@ -86,3 +87,6 @@ tsconfig.tsbuildinfo
 .wrangler/
 .dev.vars
 .env.production
+=======
+app/commit.json
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e

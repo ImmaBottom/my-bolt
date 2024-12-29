@@ -1,7 +1,11 @@
 import { WebContainer } from '@webcontainer/api';
 import { atom, map, type MapStore } from 'nanostores';
 import * as nodePath from 'node:path';
+<<<<<<< HEAD
 import type { ActionAlert, BoltAction } from '~/types/actions';
+=======
+import type { BoltAction } from '~/types/actions';
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 import { createScopedLogger } from '~/utils/logger';
 import { unreachable } from '~/utils/unreachable';
 import type { ActionCallbackData } from './message-parser';
@@ -34,6 +38,7 @@ export type ActionStateUpdate =
 
 type ActionsMap = MapStore<Record<string, ActionState>>;
 
+<<<<<<< HEAD
 class ActionCommandError extends Error {
   readonly _output: string;
   readonly _header: string;
@@ -63,12 +68,15 @@ class ActionCommandError extends Error {
   }
 }
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 export class ActionRunner {
   #webcontainer: Promise<WebContainer>;
   #currentExecutionPromise: Promise<void> = Promise.resolve();
   #shellTerminal: () => BoltShell;
   runnerId = atom<string>(`${Date.now()}`);
   actions: ActionsMap = map({});
+<<<<<<< HEAD
   onAlert?: (alert: ActionAlert) => void;
 
   constructor(
@@ -79,6 +87,12 @@ export class ActionRunner {
     this.#webcontainer = webcontainerPromise;
     this.#shellTerminal = getShellTerminal;
     this.onAlert = onAlert;
+=======
+
+  constructor(webcontainerPromise: Promise<WebContainer>, getShellTerminal: () => BoltShell) {
+    this.#webcontainer = webcontainerPromise;
+    this.#shellTerminal = getShellTerminal;
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   }
 
   addAction(data: ActionCallbackData) {
@@ -161,6 +175,7 @@ export class ActionRunner {
 
           this.#runStartAction(action)
             .then(() => this.#updateAction(actionId, { status: 'complete' }))
+<<<<<<< HEAD
             .catch((err: Error) => {
               if (action.abortSignal.aborted) {
                 return;
@@ -180,6 +195,9 @@ export class ActionRunner {
                 content: err.output,
               });
             });
+=======
+            .catch(() => this.#updateAction(actionId, { status: 'failed', error: 'Action failed' }));
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
           /*
            * adding a delay to avoid any race condition between 2 start actions
@@ -195,6 +213,7 @@ export class ActionRunner {
         status: isStreaming ? 'running' : action.abortSignal.aborted ? 'aborted' : 'complete',
       });
     } catch (error) {
+<<<<<<< HEAD
       if (action.abortSignal.aborted) {
         return;
       }
@@ -213,6 +232,11 @@ export class ActionRunner {
         content: error.output,
       });
 
+=======
+      this.#updateAction(actionId, { status: 'failed', error: 'Action failed' });
+      logger.error(`[${action.type}]:Action failed\n\n`, error);
+
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
       // re-throw the error to be caught in the promise chain
       throw error;
     }
@@ -230,6 +254,7 @@ export class ActionRunner {
       unreachable('Shell terminal not found');
     }
 
+<<<<<<< HEAD
     const resp = await shell.executeCommand(this.runnerId.get(), action.content, () => {
       logger.debug(`[${action.type}]:Aborting Action\n\n`, action);
       action.abort();
@@ -238,6 +263,13 @@ export class ActionRunner {
 
     if (resp?.exitCode != 0) {
       throw new ActionCommandError(`Failed To Execute Shell Command`, resp?.output || 'No Output Available');
+=======
+    const resp = await shell.executeCommand(this.runnerId.get(), action.content);
+    logger.debug(`${action.type} Shell Response: [exit code:${resp?.exitCode}]`);
+
+    if (resp?.exitCode != 0) {
+      throw new Error('Failed To Execute Shell Command');
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     }
   }
 
@@ -257,6 +289,7 @@ export class ActionRunner {
       unreachable('Shell terminal not found');
     }
 
+<<<<<<< HEAD
     const resp = await shell.executeCommand(this.runnerId.get(), action.content, () => {
       logger.debug(`[${action.type}]:Aborting Action\n\n`, action);
       action.abort();
@@ -265,6 +298,13 @@ export class ActionRunner {
 
     if (resp?.exitCode != 0) {
       throw new ActionCommandError('Failed To Start Application', resp?.output || 'No Output Available');
+=======
+    const resp = await shell.executeCommand(this.runnerId.get(), action.content);
+    logger.debug(`${action.type} Shell Response: [exit code:${resp?.exitCode}]`);
+
+    if (resp?.exitCode != 0) {
+      throw new Error('Failed To Start Application');
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     }
 
     return resp;

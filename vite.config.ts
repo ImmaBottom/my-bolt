@@ -5,6 +5,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+<<<<<<< HEAD
 import { execSync } from 'child_process';
 
 // Get git hash with fallback
@@ -22,6 +23,10 @@ export default defineConfig((config) => {
       __COMMIT_HASH: JSON.stringify(getGitHash()),
       __APP_VERSION: JSON.stringify(process.env.npm_package_version),
     },
+=======
+export default defineConfig((config) => {
+  return {
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     build: {
       target: 'esnext',
     },
@@ -35,7 +40,11 @@ export default defineConfig((config) => {
           v3_fetcherPersist: true,
           v3_relativeSplatPath: true,
           v3_throwAbortReason: true,
+<<<<<<< HEAD
           v3_lazyRouteDiscovery: true,
+=======
+          v3_lazyRouteDiscovery: true
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
         },
       }),
       UnoCSS(),
@@ -43,6 +52,7 @@ export default defineConfig((config) => {
       chrome129IssuePlugin(),
       config.mode === 'production' && optimizeCssModules({ apply: 'build' }),
     ],
+<<<<<<< HEAD
     envPrefix: [
       'VITE_',
       'OPENAI_LIKE_API_BASE_URL',
@@ -59,6 +69,9 @@ export default defineConfig((config) => {
       'MISTRAL_API_KEY',
       'XAI_API_KEY',
     ],
+=======
+    envPrefix: ["VITE_","OPENAI_LIKE_API_BASE_URL", "OLLAMA_API_BASE_URL", "LMSTUDIO_API_BASE_URL","TOGETHER_API_BASE_URL"],
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     css: {
       preprocessorOptions: {
         scss: {

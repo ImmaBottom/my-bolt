@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: 'Bug report'
+=======
+name: "Bug report"
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 description: Create a report to help us improve
 body:
   - type: markdown

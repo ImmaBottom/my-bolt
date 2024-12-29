@@ -12,16 +12,24 @@ import { useCallback, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import type { IProviderSetting, ProviderInfo } from '~/types/model';
 import { logStore } from '~/lib/stores/logs'; // assuming logStore is imported from this location
+<<<<<<< HEAD
+=======
+import commit from '~/commit.json';
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 interface CommitData {
   commit: string;
   version?: string;
 }
 
+<<<<<<< HEAD
 const versionData: CommitData = {
   commit: __COMMIT_HASH,
   version: __APP_VERSION,
 };
+=======
+const commitJson: CommitData = commit;
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 export function useSettings() {
   const providers = useStore(providersStore);
@@ -35,12 +43,27 @@ export function useSettings() {
   // Function to check if we're on stable version
   const checkIsStableVersion = async () => {
     try {
+<<<<<<< HEAD
       const response = await fetch(
         `https://api.github.com/repos/stackblitz-labs/bolt.diy/git/refs/tags/v${versionData.version}`,
       );
       const data: { object: { sha: string } } = await response.json();
 
       return versionData.commit.slice(0, 7) === data.object.sha.slice(0, 7);
+=======
+      const stableResponse = await fetch(
+        `https://raw.githubusercontent.com/stackblitz-labs/bolt.diy/refs/tags/v${commitJson.version}/app/commit.json`,
+      );
+
+      if (!stableResponse.ok) {
+        console.warn('Failed to fetch stable commit info');
+        return false;
+      }
+
+      const stableData = (await stableResponse.json()) as CommitData;
+
+      return commit.commit === stableData.commit;
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     } catch (error) {
       console.warn('Error checking stable version:', error);
       return false;
@@ -54,6 +77,7 @@ export function useSettings() {
     if (savedProviders) {
       try {
         const parsedProviders: Record<string, IProviderSetting> = JSON.parse(savedProviders);
+<<<<<<< HEAD
         Object.keys(providers).forEach((provider) => {
           const currentProviderSettings = parsedProviders[provider];
 
@@ -66,6 +90,17 @@ export function useSettings() {
               },
             });
           }
+=======
+        Object.keys(parsedProviders).forEach((provider) => {
+          const currentProvider = providers[provider];
+          providersStore.setKey(provider, {
+            ...currentProvider,
+            settings: {
+              ...parsedProviders[provider],
+              enabled: parsedProviders[provider].enabled ?? true,
+            },
+          });
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
         });
       } catch (error) {
         console.error('Failed to parse providers from cookies:', error);
@@ -104,16 +139,27 @@ export function useSettings() {
     let checkCommit = Cookies.get('commitHash');
 
     if (checkCommit === undefined) {
+<<<<<<< HEAD
       checkCommit = versionData.commit;
     }
 
     if (savedLatestBranch === undefined || checkCommit !== versionData.commit) {
+=======
+      checkCommit = commit.commit;
+    }
+
+    if (savedLatestBranch === undefined || checkCommit !== commit.commit) {
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
       // If setting hasn't been set by user, check version
       checkIsStableVersion().then((isStable) => {
         const shouldUseLatest = !isStable;
         latestBranchStore.set(shouldUseLatest);
         Cookies.set('isLatestBranch', String(shouldUseLatest));
+<<<<<<< HEAD
         Cookies.set('commitHash', String(versionData.commit));
+=======
+        Cookies.set('commitHash', String(commit.commit));
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
       });
     } else {
       latestBranchStore.set(savedLatestBranch === 'true');

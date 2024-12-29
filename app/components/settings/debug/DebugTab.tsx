@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSettings } from '~/lib/hooks/useSettings';
+<<<<<<< HEAD
+=======
+import commit from '~/commit.json';
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 import { toast } from 'react-toastify';
 import { providerBaseUrlEnvKeys } from '~/utils/constants';
 
@@ -43,6 +47,7 @@ interface CommitData {
   version?: string;
 }
 
+<<<<<<< HEAD
 const connitJson: CommitData = {
   commit: __COMMIT_HASH,
   version: __APP_VERSION,
@@ -75,6 +80,18 @@ const GITHUB_URLS = {
       throw new Error('Failed to fetch local commit info');
     }
   },
+=======
+const connitJson: CommitData = commit;
+
+const LOCAL_PROVIDERS = ['Ollama', 'LMStudio', 'OpenAILike'];
+const versionHash = connitJson.commit;
+const versionTag = connitJson.version;
+const GITHUB_URLS = {
+  original: 'https://api.github.com/repos/stackblitz-labs/bolt.diy/commits/main',
+  fork: 'https://api.github.com/repos/Stijnus/bolt.new-any-llm/commits/main',
+  commitJson: (branch: string) =>
+    `https://raw.githubusercontent.com/stackblitz-labs/bolt.diy/${branch}/app/commit.json`,
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 };
 
 function getSystemInfo(): SystemInfo {
@@ -390,9 +407,20 @@ export default function DebugTab() {
       const branchToCheck = isLatestBranch ? 'main' : 'stable';
       console.log(`[Debug] Checking for updates against ${branchToCheck} branch`);
 
+<<<<<<< HEAD
       const latestCommitResp = await GITHUB_URLS.commitJson(branchToCheck);
 
       const remoteCommitHash = latestCommitResp.commit;
+=======
+      const localCommitResponse = await fetch(GITHUB_URLS.commitJson(branchToCheck));
+
+      if (!localCommitResponse.ok) {
+        throw new Error('Failed to fetch local commit info');
+      }
+
+      const localCommitData = (await localCommitResponse.json()) as CommitData;
+      const remoteCommitHash = localCommitData.commit;
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
       const currentCommitHash = versionHash;
 
       if (remoteCommitHash !== currentCommitHash) {
@@ -540,7 +568,11 @@ export default function DebugTab() {
             <div className="mt-3 pt-3 border-t border-bolt-elements-surface-hover">
               <p className="text-xs text-bolt-elements-textSecondary">Version</p>
               <p className="text-sm font-medium text-bolt-elements-textPrimary font-mono">
+<<<<<<< HEAD
                 {connitJson.commit.slice(0, 7)}
+=======
+                {versionHash.slice(0, 7)}
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
                 <span className="ml-2 text-xs text-bolt-elements-textSecondary">
                   (v{versionTag || '0.0.1'}) - {isLatestBranch ? 'nightly' : 'stable'}
                 </span>

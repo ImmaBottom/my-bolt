@@ -1,10 +1,17 @@
 # bolt.diy (Previously oTToDev)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 [![bolt.diy: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.diy)
 
 Welcome to bolt.diy, the official open source version of Bolt.new (previously known as oTToDev and bolt.new ANY LLM), which allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
 
+<<<<<<< HEAD
 Check the [bolt.diy Docs](https://stackblitz-labs.github.io/bolt.diy/) for more information.
+=======
+Check the [bolt.diy Docs](https://stackblitz-labs.github.io/bolt.diy/) for more information. 
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 We have also launched an experimental agent called the "bolt.diy Expert" that can answer common questions about bolt.diy. Find it here on the [oTTomator Live Agent Studio](https://studio.ottomator.ai/).
 
@@ -26,6 +33,10 @@ bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMed
 
 [Join the bolt.diy community here, in the thinktank on ottomator.ai!](https://thinktank.ottomator.ai)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 ## Requested Additions
 
 - ✅ OpenRouter Integration (@coleam00)
@@ -61,9 +72,12 @@ bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMed
 - ✅ PromptLibrary to have different variations of prompts for different use cases (@thecodacus)
 - ✅ Detect package.json and commands to auto install & run preview for folder and git import (@wonderwhy-er)
 - ✅ Selection tool to target changes visually (@emcconnell)
+<<<<<<< HEAD
 - ✅ Detect terminal Errors and ask bolt to fix it (@thecodacus)
 - ✅ Detect preview Errors and ask bolt to fix it (@wonderwhy-er)
 - ✅ Add Starter Template Options (@thecodacus)
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 - ⬜ **HIGH PRIORITY** - Prevent bolt from rewriting files as often (file locking and diffs)
 - ⬜ **HIGH PRIORITY** - Better prompting for smaller LLMs (code window sometimes doesn't start)
 - ⬜ **HIGH PRIORITY** - Run agents in the backend as opposed to a single model call
@@ -73,7 +87,11 @@ bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMed
 - ⬜ Upload documents for knowledge - UI design templates, a code base to reference coding style, etc.
 - ⬜ Voice prompting
 - ⬜ Azure Open AI API Integration
+<<<<<<< HEAD
 - ✅ Perplexity Integration (@meetpateltech)
+=======
+- ⬜ Perplexity Integration
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 - ⬜ Vertex AI Integration
 
 ## Features
@@ -86,6 +104,7 @@ bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMed
 - **Download projects as ZIP** for easy portability.
 - **Integration-ready Docker support** for a hassle-free setup.
 
+<<<<<<< HEAD
 ## Setup
 
 If you're new to installing software from GitHub, don't worry! If you encounter any issues, feel free to submit an "issue" using the provided links or improve this documentation by forking the repository, editing the instructions, and submitting a pull request. The following instruction will help you get the stable branch up and running on your local machine in no time.
@@ -261,17 +280,115 @@ To get the latest changes from the repository:
    ```
 
 2. **Pull Latest Updates**:
+=======
+## Setup 
+
+If you're new to installing software from GitHub, don't worry! If you encounter any issues, feel free to submit an "issue" using the provided links or improve this documentation by forking the repository, editing the instructions, and submitting a pull request. The following instruction will help you get the stable branch up and running on your local machine in no time.  
+
+### Prerequisites  
+
+1. **Install Git**: [Download Git](https://git-scm.com/downloads)  
+2. **Install Node.js**: [Download Node.js](https://nodejs.org/en/download/)  
+
+   - After installation, the Node.js path is usually added to your system automatically. To verify:  
+     - **Windows**: Search for "Edit the system environment variables," click "Environment Variables," and check if `Node.js` is in the `Path` variable.  
+     - **Mac/Linux**: Open a terminal and run:  
+       ```bash  
+       echo $PATH  
+       ```  
+       Look for `/usr/local/bin` in the output.  
+
+### Clone the Repository  
+
+Clone the repository using Git:  
+
+```bash  
+git clone -b stable https://github.com/stackblitz-labs/bolt.diy  
+```  
+
+---
+
+## Run the Application  
+
+### Option 1: Without Docker
+
+1. **Install Dependencies**:  
+   ```bash  
+   pnpm install  
+   ```  
+   If `pnpm` is not installed, install it using:  
+   ```bash  
+   sudo npm install -g pnpm  
+   ```  
+
+2. **Start the Application**:  
+   ```bash  
+   pnpm run dev  
+   ```
+   This will start the Remix Vite development server. You will need Google Chrome Canary to run this locally if you use Chrome! It's an easy install and a good browser for web development anyway.  
+
+### Option 2: With Docker  
+
+#### Prerequisites  
+- Ensure Git, Node.js, and Docker are installed: [Download Docker](https://www.docker.com/)  
+
+#### Steps  
+
+1. **Build the Docker Image**:  
+
+   Use the provided NPM scripts:  
+   ```bash  
+   npm run dockerbuild 
+   ```  
+
+   Alternatively, use Docker commands directly:  
+   ```bash  
+   docker build . --target bolt-ai-development
+   ```  
+
+2. **Run the Container**:  
+   Use Docker Compose profiles to manage environments:  
+   ```bash  
+   docker-compose --profile development up 
+   ```  
+
+   - With the development profile, changes to your code will automatically reflect in the running container (hot reloading).  
+
+---
+
+### Entering API Keys
+
+All of your API Keys can be configured directly in the application. Just selecte the provider you want from the dropdown and click the pencile icon to enter your API key.
+
+---
+
+### Update Your Local Version to the Latest
+
+To keep your local version of bolt.diy up to date with the latest changes, follow these steps for your operating system:
+
+#### 1. **Navigate to your project folder**  
+   Navigate to the directory where you cloned the repository and open a terminal:
+
+#### 2. **Fetch the Latest Changes**  
+   Use Git to pull the latest changes from the main repository:
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
    ```bash
    git pull origin main
    ```
 
+<<<<<<< HEAD
 3. **Update Dependencies**:
+=======
+#### 3. **Update Dependencies**  
+   After pulling the latest changes, update the project dependencies by running the following command:
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
    ```bash
    pnpm install
    ```
 
+<<<<<<< HEAD
 4. **Restore Your Local Changes** (if any):
    ```bash
    git stash pop
@@ -301,6 +418,16 @@ If you encounter issues:
    ```
 
 Remember to always commit your local changes or stash them before pulling updates to avoid conflicts.
+=======
+#### 4. **Run the Application**  
+   Once the updates are complete, you can start the application again with:
+
+   ```bash
+   pnpm run dev
+   ```
+
+This ensures that you're running the latest version of bolt.diy and can take advantage of all the newest features and bug fixes.
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 ---
 

@@ -20,6 +20,7 @@ export interface StartAction extends BaseAction {
 export type BoltAction = FileAction | ShellAction | StartAction;
 
 export type BoltActionData = BoltAction | BaseAction;
+<<<<<<< HEAD
 
 export interface ActionAlert {
   type: string;
@@ -28,3 +29,5 @@ export interface ActionAlert {
   content: string;
   source?: 'terminal' | 'preview'; // Add source to differentiate between terminal and preview errors
 }
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e

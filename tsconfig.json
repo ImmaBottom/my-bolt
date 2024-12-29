@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+<<<<<<< HEAD
     "types": [
       "@remix-run/cloudflare",
       "vite/client",
       "@cloudflare/workers-types/2023-07-01",
       "@types/dom-speech-recognition"
     ],
+=======
+    "types": ["@remix-run/cloudflare", "vite/client", "@cloudflare/workers-types/2023-07-01", "@types/dom-speech-recognition"],
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",

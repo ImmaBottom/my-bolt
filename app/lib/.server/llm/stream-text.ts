@@ -1,4 +1,8 @@
 import { convertToCoreMessages, streamText as _streamText } from 'ai';
+<<<<<<< HEAD
+=======
+import { getModel } from '~/lib/.server/llm/model';
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 import { MAX_TOKENS } from './constants';
 import { getSystemPrompt } from '~/lib/common/prompts/prompts';
 import {
@@ -7,7 +11,10 @@ import {
   getModelList,
   MODEL_REGEX,
   MODIFICATIONS_TAG_NAME,
+<<<<<<< HEAD
   PROVIDER_LIST,
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   PROVIDER_REGEX,
   WORK_DIR,
 } from '~/utils/constants';
@@ -184,8 +191,11 @@ export async function streamText(props: {
 
   const dynamicMaxTokens = modelDetails && modelDetails.maxTokenAllowed ? modelDetails.maxTokenAllowed : MAX_TOKENS;
 
+<<<<<<< HEAD
   const provider = PROVIDER_LIST.find((p) => p.name === currentProvider) || DEFAULT_PROVIDER;
 
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   let systemPrompt =
     PromptLibrary.getPropmtFromLibrary(promptId || 'default', {
       cwd: WORK_DIR,
@@ -201,12 +211,16 @@ export async function streamText(props: {
   }
 
   return _streamText({
+<<<<<<< HEAD
     model: provider.getModelInstance({
       model: currentModel,
       serverEnv,
       apiKeys,
       providerSettings,
     }),
+=======
+    model: getModel(currentProvider, currentModel, serverEnv, apiKeys, providerSettings) as any,
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
     system: systemPrompt,
     maxTokens: dynamicMaxTokens,
     messages: convertToCoreMessages(processedMessages as any),

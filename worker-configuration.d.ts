@@ -1,5 +1,8 @@
 interface Env {
+<<<<<<< HEAD
   DEFAULT_NUM_CTX: Settings;
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
   ANTHROPIC_API_KEY: string;
   OPENAI_API_KEY: string;
   GROQ_API_KEY: string;

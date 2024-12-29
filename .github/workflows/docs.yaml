@@ -4,8 +4,11 @@ on:
   push:
     branches:
       - main
+<<<<<<< HEAD
     paths:
       - 'docs/**' # This will only trigger the workflow when files in docs directory change
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 permissions:
   contents: write
 jobs:
@@ -23,7 +26,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+<<<<<<< HEAD
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+=======
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
       - uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
@@ -32,4 +39,8 @@ jobs:
             mkdocs-material-
 
       - run: pip install mkdocs-material
+<<<<<<< HEAD
       - run: mkdocs gh-deploy --force
+=======
+      - run: mkdocs gh-deploy --force 
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e

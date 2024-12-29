@@ -35,8 +35,13 @@ export default function ProvidersTab() {
     newFilteredProviders.sort((a, b) => a.name.localeCompare(b.name));
 
     // Split providers into regular and URL-configurable
+<<<<<<< HEAD
     const regular = newFilteredProviders.filter((p) => !URL_CONFIGURABLE_PROVIDERS.includes(p.name));
     const urlConfigurable = newFilteredProviders.filter((p) => URL_CONFIGURABLE_PROVIDERS.includes(p.name));
+=======
+    const regular = newFilteredProviders.filter(p => !URL_CONFIGURABLE_PROVIDERS.includes(p.name));
+    const urlConfigurable = newFilteredProviders.filter(p => URL_CONFIGURABLE_PROVIDERS.includes(p.name));
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
     setFilteredProviders([...regular, ...urlConfigurable]);
   }, [providers, searchTerm, isLocalModel]);
@@ -112,8 +117,13 @@ export default function ProvidersTab() {
     );
   };
 
+<<<<<<< HEAD
   const regularProviders = filteredProviders.filter((p) => !URL_CONFIGURABLE_PROVIDERS.includes(p.name));
   const urlConfigurableProviders = filteredProviders.filter((p) => URL_CONFIGURABLE_PROVIDERS.includes(p.name));
+=======
+  const regularProviders = filteredProviders.filter(p => !URL_CONFIGURABLE_PROVIDERS.includes(p.name));
+  const urlConfigurableProviders = filteredProviders.filter(p => URL_CONFIGURABLE_PROVIDERS.includes(p.name));
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
   return (
     <div className="p-4">
@@ -128,19 +138,37 @@ export default function ProvidersTab() {
       </div>
 
       {/* Regular Providers Grid */}
+<<<<<<< HEAD
       <div className="grid grid-cols-2 gap-4 mb-8">{regularProviders.map(renderProviderCard)}</div>
+=======
+      <div className="grid grid-cols-2 gap-4 mb-8">
+        {regularProviders.map(renderProviderCard)}
+      </div>
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
       {/* URL Configurable Providers Section */}
       {urlConfigurableProviders.length > 0 && (
         <div className="mt-8">
           <h3 className="text-lg font-semibold mb-2 text-bolt-elements-textPrimary">Experimental Providers</h3>
           <p className="text-sm text-bolt-elements-textSecondary mb-4">
+<<<<<<< HEAD
             These providers are experimental and allow you to run AI models locally or connect to your own
             infrastructure. They require additional setup but offer more flexibility.
           </p>
           <div className="space-y-4">{urlConfigurableProviders.map(renderProviderCard)}</div>
+=======
+            These providers are experimental and allow you to run AI models locally or connect to your own infrastructure. They require additional setup but offer more flexibility.
+          </p>
+          <div className="space-y-4">
+            {urlConfigurableProviders.map(renderProviderCard)}
+          </div>
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
         </div>
       )}
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e

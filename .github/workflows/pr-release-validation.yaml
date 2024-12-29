@@ -9,10 +9,17 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
 
     steps:
       - uses: actions/checkout@v4
 
+=======
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
       - name: Validate PR Labels
         run: |
           if [[ "${{ contains(github.event.pull_request.labels.*.name, 'stable-release') }}" == "true" ]]; then
@@ -28,4 +35,8 @@ jobs:
             fi
           else
             echo "This PR doesn't have the stable-release label. No release will be created." 
+<<<<<<< HEAD
           fi
+=======
+          fi
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e

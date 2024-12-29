@@ -1,6 +1,9 @@
 import { WebContainer } from '@webcontainer/api';
 import { WORK_DIR_NAME } from '~/utils/constants';
+<<<<<<< HEAD
 import { cleanStackTrace } from '~/utils/stacktrace';
+=======
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 
 interface WebContainerContext {
   loaded: boolean;
@@ -23,6 +26,7 @@ if (!import.meta.env.SSR) {
     import.meta.hot?.data.webcontainer ??
     Promise.resolve()
       .then(() => {
+<<<<<<< HEAD
         return WebContainer.boot({
           workdirName: WORK_DIR_NAME,
           forwardPreviewErrors: true, // Enable error forwarding from iframes
@@ -50,6 +54,12 @@ if (!import.meta.env.SSR) {
           }
         });
 
+=======
+        return WebContainer.boot({ workdirName: WORK_DIR_NAME });
+      })
+      .then((webcontainer) => {
+        webcontainerContext.loaded = true;
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
         return webcontainer;
       });
 

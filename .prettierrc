@@ -4,6 +4,10 @@
   "useTabs": false,
   "tabWidth": 2,
   "semi": true,
+<<<<<<< HEAD
   "bracketSpacing": true,
   "endOfLine": "auto"
+=======
+  "bracketSpacing": true
+>>>>>>> 48d3b799435c5f563650cf3ade719ed99182eb8e
 }
